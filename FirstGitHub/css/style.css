@@ -1,0 +1,122 @@
+
+header, footer, section, nav, article {
+	display: block;
+}
+
+h1, h2, h3 {
+	font-family: Arial, Geneva, Helvetica
+}
+	
+body {
+	margin:10px auto;
+	width: 960px; /*-- Try and reduce window width manually --*/
+	font-size: 100%
+}
+
+p, ul, li {
+	margin:0px;
+	padding:0;
+	color: Black;
+	font-size: 1em;
+	font-family: Georgia, Times New Roman, Times, Serif;
+	/*font-weight: 100;*/
+}
+
+figure, figcaption {
+	display: block;
+	text-align: center;
+	font-size: 0.9em;
+	font-family: Georgia, Times New Roman, Times, Serif;
+}
+
+/*-- Classes --*/
+
+.indent {margin-left: 3em}
+.textLeft {
+	clear: left; 
+	float: right; 
+	padding: 3px;
+	margin: 10px;
+	border-style: solid;
+	border-width: 1px;
+}
+.textRight {
+	clear: right; 
+	float: left; 
+	padding: 3px;
+	margin: 10px;
+	border-style: solid;
+	border-width: 1px;
+}
+
+/*-- Divisions --*/
+
+header#banner {
+	width: 960px;
+	height: 100px;
+	margin: 5px auto;
+	border: 1px solid #ffffff;
+	text-align: center;
+	background-image: url('../pics/banner_layer1a.jpg');
+	background-repeat: no-repeat;
+}
+
+footer#banner {
+	float: left;
+	width: 960px;
+	height: 40px;
+	margin: 5px auto;
+	border: 1px solid #ffffff;
+	text-align: center;
+	background-image: url('../pics/banner_layer1a.jpg');
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
+
+section#sidebar {
+	margin-top: 20px;
+	float: right;
+	width: 200px;
+	height: 700px auto;
+	border: 1px hidden #000000;
+	background-color: #edc9af;
+}
+
+section#wrapper {
+	float: left;
+	width: 700px;
+	height: 700px auto;
+	margin-top: 5px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 50px;
+}
+
+/*------NAVIGATION BAR---------------*/
+
+nav {
+	float: left;
+	margin-top: 0px;
+	height: 300px;
+	font-family: Arial, Geneva;
+}
+
+nav ul{
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+nav li a {
+	display: block;
+	padding: 2px;
+	width: 196px; /*-- (180-2-1-1) */
+	color: #000000;
+	text-decoration: none;
+}
+
+nav li a:hover {
+	background-color: #e18b6b;
+}
+
+
