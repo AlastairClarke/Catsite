@@ -1,8 +1,7 @@
 
 # Rayleigh Flight of Drunk
 
-#setwd("/home/alastair/Projects/gev")
-#source("RayleighDrunk_day.r")
+#source("https://github.com/AlastairClarke/Catsite/blob/master/code/RayleighDrunk_day.r")
 
 # Libraries
 library(ggplot2)
@@ -29,4 +28,4 @@ ylim(c(-10, 45)) +
 theme_bw() +
 theme(text=element_text(family="Georgia", size=18))
 
-ggsave(filename="pic/DrunkDisp_RayleighExample.jpeg", plot=gp, width=8, height=4, dpi=200)
+ggsave(filename="DrunkDisp_RayleighExample.jpeg", plot=gp, width=8, height=4, dpi=200)
