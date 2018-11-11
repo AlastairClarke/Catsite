@@ -1,9 +1,11 @@
 
 # Rayleigh Flight of Drunk
 
-#source("https://github.com/AlastairClarke/Catsite/blob/master/code/RayleighDrunk_day.r")
+#"https://github.com/AlastairClarke/Catsite/blob/master/code/RayleighDrunk_day.r"
 
 # Libraries
+# install.packages("ggplot2)
+# install.packages("data.table")
 library(ggplot2)
 library(data.table)
 
