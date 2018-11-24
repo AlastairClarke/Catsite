@@ -22,6 +22,11 @@ p, ul, li {
 	/*font-weight: 100;*/
 }
 
+blockquote {
+	font-size: 0.95em;
+	font-family: Georgia, Times New Roman, Times, Serif;
+}
+
 figure, figcaption {
 	display: block;
 	text-align: center;
