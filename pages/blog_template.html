@@ -1,0 +1,101 @@
+
+<!DOCTYPE HTML>
+<html lang="en-GB">
+	<head>
+		<title> alastairclarke.org | Blog </title>
+		<meta charset="UTF-8">
+		<link rel=StyleSheet type="text/css" href="../css/style.css">
+	</head>
+
+	<body>
+		<header id="banner">
+			<h1> Alastair Clarke's Personal Website </h1>
+		</header>
+		
+		<section id="sidebar">
+		<nav Class="navigation">
+			<ul>
+				<li> <a href="../index.html"> Home </a>
+				<li> <a href="../pages/about.html"> About </a>
+				<li> <a href="../pages/blog.html"><b> Blog </b></a>
+				<li> <a href="../pages/code.html"> Code </a>
+				<li> <a href="../pages/reviews.html"> Reviews </a>
+			</ul>
+		</nav>
+		</section>
+		
+		<section id="wrapper">
+			<article>
+				<h2> Extremely Deviant Yet Normal Drunks </h2>
+				<p>	
+<i> What are the limits of normal behaviour? </i>
+<br>
+<br>
+It's the end of the night in a town called <i>Luck</i> and a drunk is being sent home from the pub. He only lives 100 steps away in one direction. The pub landlord orients him that way and wishes him all the best. 
+<br>
+<br>
+The drunk takes a unit-sized spatial-step for every unit-sized time-step. He always advances towards his home but he erratically veers perpendicular to his intended direction. He is just as likely to veer left as to veer right. On average, he makes it home but sometimes he ends up quite far away. It is okay if he deviates to the right, he just ends up in a park, but to the left of his home is a lake which he could fall into. This is a daily routine for the pub landlord and recently he's started to worry that his most regular customer is at risk of falling in. 
+<br>
+<br>
+Let <i>X<sub>i</sub></i> be the overall displacement from the perpendicular at time <i>t</i>=<i>i</i>, then:  
+<br>
+<br>
+<i>X<sub>i</sub></i> = <i>X<sub>i-1</sub></i> + <i>U<sub>i</sub></i>,       
+<br>
+<br>
+where <i>X</i><sub>0</sub>=0 and <i>U</i> is the displacement per step. If our hero veers left, <i>u</i>=1; and if he veers right, <i>u</i>=-1. He is just as likely to veer left or right:
+<br>
+<br>
+<i>P</i>(<i>U</i>=1) = 0.5; <i>P</i>(<i>U</i>=-1) = 0.5.
+<br>
+<br>
+Figure 1 shows the progress from the pub on a typical night. This time he was lucky and ended up to the right of his home.
+<figure>
+<img src="../pics/DrunkDisp_RayleighExample.jpeg" alt="Drunk Displacement Example" height=300px width=600px>
+<figcaption> Fig. 1: The drunk's progress on a given day showing his perpendicular displacement from his direction home. The positions of pub, home and lake are labelled.
+</figcaption>
+</figure>
+Every day over the course of a year we measure <i>X<sub>n</sub></i> where <i>n</i>=100. I define <i>Z<sub>j</sub></i> as the value of <i>X<sub>n</sub></i> on day <i>j</i> (= 1, 2, ..., <i>m</i>). 
+<br>
+<br>
+Figure 2 shows the daily displacement made by the drunk over a typical year. The points scatter about zero but on a few nights his displacement exceeded 20. 
+<figure>
+<img src="../pics/DailyDisp_RayleighExample.jpeg" alt="Daily Displacement Example" height=300px width=600px>
+<figcaption> Fig. 2: The drunk's daily displacement over a given year.</figcaption>
+</figure>
+The maximum daily displacement over a given year (<i>k</i>) is given by:
+<br>
+<br>
+<i>M<sub>k</sub></i> = max{<i>Z<sub>1</sub></i>, ..., <i>Z<sub>m</sub></i>},
+<br>
+<br>
+where <i>m</i>=365. The pub landlord wants to know the distribution of <i>M<sub>k</sub></i>, obtained by simulating the process over <i>l</i> years where <i>l</i>=1,000.  
+<figure>
+<img src="../pics/AnnualDisp_Rayleigh_l1000.jpeg" alt="Annual Maximum Displacement over 1,000 years" height=360px width=480px>
+<figcaption> Fig. 3: The drunk's annual maximum displacement over 1,000 years of simulations.</figcaption>
+</figure>
+The pub landlord accepts the risk if the distance of the lake is greater than or equal to the 1% quantile of the distribution function:
+<br>
+<br>
+Pr{<i>M<sub>k</sub></i> &#8804 <i>y</i>} = <i>F</i>(<i>y</i>).
+<br>
+<br>
+1% implies that the drunk is likely to exceed this displacement once in 100 years, which is a greater duration that his life expectancy. Using Figure 4, the value of <i>M<sub>k</sub></i> which corresponds to an exceedance probability of 1% is about 36.5. As shown in Figure 1, the lake is 40 units from the drunk's home and therefore further away than the maximum displacement the drunk is likely to reach in his lifetime. The pub landlord can relax; it is extremely unlikely that his most regular customer will ever fall into the lake. 
+<figure>
+<img src="../pics/EP_Rayleigh_l1000.jpeg" alt="Exceedance Probability of Annual Maximum Displacement over 1,000 years" height=360px width=480px>
+<figcaption> Fig. 4: Exceedance probability of the drunk's annual maximum displacement over 1,000 years of simulations. Red lines indicate the 1% quantile.</figcaption>
+</figure>
+<br>
+Alastair Clarke
+<br>
+10th November, 2018
+</p>
+			</article>
+		</section>
+
+		<footer id="banner">
+			<p style="background-color:white"> Copyright &copy 2018 Alastair Clarke </p>
+		</footer>
+	</body>
+
+</html>
