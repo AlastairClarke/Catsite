@@ -1,0 +1,125 @@
+
+<!DOCTYPE HTML>
+<html lang="en-GB">
+	<head>
+		<title> alastairclarke.org | Blog </title>
+		<meta charset="UTF-8">
+		<link rel=StyleSheet type="text/css" href="../../css/style.css">
+	</head>
+
+	<body>
+		<header id="banner">
+			<h1> Alastair Clarke's Personal Website </h1>
+		</header>
+		
+		<section id="sidebar">
+		<nav Class="navigation">
+			<ul>
+				<li> <a href="../../index.html"> Home </a>
+				<li> <a href="../../pages/about.html"> About </a>
+				<li> <a href="../../pages/blog.html"> Blog </a>
+				<li> <a href="../../pages/code.html"><b> Code </b></a>
+				<li> <a href="../../pages/reviews.html"> Reviews </a>
+			</ul>
+		</nav>
+		</section>
+		
+		<section id="wrapper">
+			<article>
+				<h2> EduCAT: R </h2>
+				<p>	
+<i> Notes from <a href="http://adv-r.had.co.nz"> Advanced R </a> by Hadley Wickham </i>
+<br>
+<h3> Data Structures </h3>
+<h4> Vectors </h4>
+<ul>
+<li> There are six types of atomic vector: logical, character, integer, double, complex and raw.
+<li> A list can contain different types (heterogeneous) while an atomic vector can only contain one type (homogeneous) 
+<li> A list can contain nested vectors whereas an atomic vector flattens nested vectors.
+<li> To make a list of heterogeneous types use <code>list()</code> and not <code>c()</code> as the latter will coerce your types into the most flexible type in your list.
+</ul>
+<h4> Attributes </h4>
+<ul>
+<li> For storing metadata about an object. 
+<code>
+y <- 1:10
+attr(y, "my_att") <- "This is a vector"
+</code>
+<li> Names, Dimensions and Class are the only attributes that survive when a vector has been modified.
+</ul>
+<h4> Factors </h4>
+<ul>
+<li> A factor is a vector of predefined value; used to store categorical data. 
+<li> A factor has two attributes: Class and Levels. Levels defines the set of allowed values. 
+<li> You can't use values that are not in the levels. The following is a friendly face :-) :
+<code>
+## Warning in `[<-.factor`(`*tmp*`, 2, value = xx): invalid factor level, NA
+## generated
+</code>
+<li> Setting levels:
+<code>
+state_char <- c("flip", "flip", "flip")
+state_factor <- factor(state_char, levels=c("flip", "flop"))
+table(state_factor)
+##state_factor
+##flip flop 
+##   3    0 
+</code>
+<li> A column of numeric vectors will be read in as factors if the column contains a non-numeric value. 
+<li> Remedy 1: coerce the vector from a factor to a character and then a double.
+<li> Remedy 2: use a <code> na.strings="..."</code> argument when reading in data file.
+<li> Tip: Convert a factor to a character if you need it to be string-like.
+<li> Example:
+<code>
+letters <- c("a", "b", "c")	# Atomic Vector of Characters
+f1 <- factor(letters)		# f1 is a factor with the same values as letters
+levels(f1) <- rev(levels(f1))	# Reverse f1's levels
+f2 <- rev(factor(letters))	# f2, factor, same values, reverse order
+f3 <- factor(letters, levels=rev(letters)) # f3, factor, same, reversed levels 
+</code>
+</ul> 
+<h4> Matrices and Arrays </h4>
+<ul>
+<li> Useful commands to play with:
+<code>
+a <- matrix(1:6, c(2,3))
+# same as
+a <- matrix(1:6, nrow=2, ncol=3)
+# extra dimension
+b <- array (1:12, c(2,3,2))
+</code>
+<code> 
+<li>length()
+<li>colnames()
+<li>rownames() 
+<li>cbind()
+<li>rbind()
+</code>
+</ul>
+<h4> Data frames </h4>
+<ul>
+<li> List of equal-length vectors. 2d structure.
+<code>
+df <- data.frame(x=1:3, y=c("a", "b", "c"), stringsAsFactors=FALSE)
+</code>
+<li> Coerce an object with <code>as.data.frame()</code>
+<li> Combine with others data frames using <code>cbind()</code> and <code>rbind()</code>.
+<li> Use <code> plyr::rbind.fill()</code> to get by the column-name rule.
+</ul>
+</p>
+<br>
+<br>
+<p>
+Alastair Clarke
+<br>
+9th December, 2018
+</p>
+			</article>
+		</section>
+
+		<footer id="banner">
+			<p style="background-color:white"> Copyright &copy 2018 Alastair Clarke </p>
+		</footer>
+	</body>
+
+</html>
