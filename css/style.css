@@ -13,6 +13,10 @@ body {
 	font-size: 100%
 }
 
+code { white-space:pre; 
+	font-size:large;
+}
+
 p, ul, li {
 	margin:0px;
 	padding:0;
