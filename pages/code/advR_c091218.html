@@ -30,7 +30,9 @@
 				<p>	
 <i> Notes from <a href="http://adv-r.had.co.nz"> Advanced R </a> by Hadley Wickham </i>
 <br>
-<h3> Data Structures </h3>
+<br>
+<a href="http://adv-r.had.co.nz/Data-structures.html"><h3> Data Structures </h3></a>
+<hr>
 <h4> Vectors </h4>
 <ul>
 <li> There are six types of atomic vector: logical, character, integer, double, complex and raw.
@@ -49,9 +51,10 @@ attr(y, "my_att") <- "This is a vector"
 </ul>
 <h4> Factors </h4>
 <ul>
-<li> A factor is a vector of predefined value; used to store categorical data. 
-<li> A factor has two attributes: Class and Levels. Levels defines the set of allowed values. 
-<li> You can't use values that are not in the levels. The following is a friendly face :-) :
+<li> A factor is a vector of predefined values; used to store categorical data. 
+<li> A factor has two attributes: Class and Levels. 
+<li> Levels: the set of allowed values. 
+<li> You can't use values that are not in the levels. Recognise this error?
 <code>
 ## Warning in `[<-.factor`(`*tmp*`, 2, value = xx): invalid factor level, NA
 ## generated
@@ -65,7 +68,7 @@ table(state_factor)
 ##flip flop 
 ##   3    0 
 </code>
-<li> A column of numeric vectors will be read in as factors if the column contains a non-numeric value. 
+<li> A column of numeric vectors will be read as factors if the column contains a non-numeric value. 
 <li> Remedy 1: coerce the vector from a factor to a character and then a double.
 <li> Remedy 2: use a <code> na.strings="..."</code> argument when reading in data file.
 <li> Tip: Convert a factor to a character if you need it to be string-like.
@@ -104,7 +107,57 @@ df <- data.frame(x=1:3, y=c("a", "b", "c"), stringsAsFactors=FALSE)
 </code>
 <li> Coerce an object with <code>as.data.frame()</code>
 <li> Combine with others data frames using <code>cbind()</code> and <code>rbind()</code>.
-<li> Use <code> plyr::rbind.fill()</code> to get by the column-name rule.
+<li> Use <code> plyr::rbind.fill()</code> to work around the column-name rule.
+</ul>
+<br>
+<br>
+<a href="http://adv-r.had.co.nz/Subsetting.html"> <h3>Subsetting</h3></a>
+<hr>
+<h4> Data types </h4>
+<ul>
+<li> 1d subsetting: Select, omit, order
+<code>
+x[c(1,3)]
+x[-1]
+x[order(x)]
+</code> 
+<li> 2d subsetting: matrix[rows, columns]
+<code>
+a[1:2, ]
+</code>
+<li> 2d subsetting: data frames
+<code>
+df <- data.frame(x=1:3, y=1:3, z=letters[1:3])
+df[df$x==2,]
+df[df$y==2,]
+df[df$z=="b",]
+df[2,]
+</code>
+<li> S3 objects consist of atomic vectors, arrays and lists. S4 objects have <code>@</code> and <code>slot()</code>. See object-oriented systems.
+<li> A function for extracting the diagonal of a matrix:
+<code>
+mydiag <- function(x){
+	i.n <- nrow(x)
+	y <- seq(1, i.n, 1)
+	for (i in (1: i.n)){
+		y[i] <- x[i,i]
+		}
+	return(y)
+}
+</code>
+<li> <code>df[is.na(df)] <- 0</code> converts NA values to 0.
+</ul>
+<h4> Subsetting Operators </h4>
+<ul>
+<li> Use <code>[[</code> to pull values from a <b>list</b>.
+<li> One common mistake with the <code>$</code> is to try to use it when the name of the column is stored as a variable. 
+<code>
+var <- "cyl"
+mtcars$var
+##NULL
+mtcar[[vars]]
+## [1] 6 6 4 ...
+</code>
 </ul>
 </p>
 <br>
@@ -112,7 +165,7 @@ df <- data.frame(x=1:3, y=c("a", "b", "c"), stringsAsFactors=FALSE)
 <p>
 Alastair Clarke
 <br>
-9th December, 2018
+11th December, 2018
 </p>
 			</article>
 		</section>
