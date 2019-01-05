@@ -128,4 +128,9 @@ nav li a:hover {
 	background-color: #e18b6b;
 }
 
-
+/*---- Mobile Phone -----*/
+@media only screen and (max-width: 768px) {
+ body {
+  width: 100%
+ }
+}
