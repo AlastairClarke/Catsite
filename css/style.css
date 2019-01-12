@@ -86,9 +86,7 @@ section#sidebar {
 	margin-top: 20px;
 	float: right;
 	width: 200px;
-	height: 700px auto;
-	border: 1px hidden #000000;
-	background-color: #edc9af;
+	height: auto;
 }
 
 section#wrapper {
@@ -106,7 +104,6 @@ section#wrapper {
 nav {
 	float: left;
 	margin-top: 0px;
-	height: 300px;
 	font-family: Arial, Geneva;
 }
 
@@ -114,18 +111,26 @@ nav ul{
 	margin: 0px;
 	padding: 0px;
 	list-style-type: none;
+	text-align: center;
 }
 
 nav li a {
 	display: block;
-	padding: 2px;
+	padding: 5px;
 	width: 196px; /*-- (180-2-1-1) */
 	color: #000000;
+	background-color: #edc9af;
 	text-decoration: none;
+	border: 1px;
+	border-style: solid;
+	border-radius: 5px;
 }
 
 nav li a:hover {
 	background-color: #e18b6b;
+	border: 1px;
+	border-style: solid;
+	border-radius: 5px;
 }
 
 /*---- Mobile Phone -----*/
