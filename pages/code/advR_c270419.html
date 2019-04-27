@@ -1,0 +1,78 @@
+
+<!DOCTYPE HTML>
+<html lang="en-GB">
+	<head>
+		<title> alastairclarke.org | Blog </title>
+		<meta charset="UTF-8">
+		<link rel=StyleSheet type="text/css" href="../../css/style.css">
+	</head>
+
+	<body>
+		<header id="banner">
+			<h1> Alastair Clarke's Personal Website </h1>
+		</header>
+		
+		<section id="sidebar">
+		<nav Class="navigation">
+			<ul>
+				<li> <a href="../../index.html"> Home </a>
+				<li> <a href="../../pages/about.html"> About </a>
+				<li> <a href="../../pages/blog.html"> Blog </a>
+				<li> <a href="../../pages/code.html"><b> Code </b></a>
+				<li> <a href="../../pages/reviews.html"> Reviews </a>
+			</ul>
+		</nav>
+		</section>
+		
+		<section id="wrapper">
+			<article>
+				<h2> EduCAT: Debugging in R </h2>
+				<p>	
+<i> Notes from <a href="http://adv-r.had.co.nz/"> Advanced R </a> by Hadley Wickham </i>
+<br>
+<br>
+
+<a href="http://adv-r.had.co.nz/Exceptions-Debugging.html"><h3> Debugging </h3></a>
+<hr>
+<h4> Technique </h4>
+<ul>
+<li> Take the scientific approach:
+<ul>
+	<li> Develop a hypothesis </li>
+	<li> Perform experiments to test that hypothesis </li>
+	<li> Relate findings to the original hypothesis </li>
+</ul>
+</li>
+<li> Instead of writing one big function that does everything, create smaller functions that work together (or sequentially). </li>
+</ul>
+<h4> Tools </h4>
+<ul>
+<li> <code>traceback()</code> shows you where the error occurred. Read its output from bottom-to-top.</li>
+<li> RStudios' 'Rerun with Debug' tool reruns the codes and pauses where the error occurred. </li>
+</ul>
+<h4> Condition Handling </h4>
+<ul>
+<li> Use case: fitting many models to data and one model fails. </li>
+<li> Three tools: <code>try(), tryCatch()</code> and <code>withCallingHandlers()</code>. </li>
+<li> Create a built-in function to test for the try-error class and easily identify inputs that failed. </li>
+</ul>
+<h4> Defensive Programming </h4>
+<ul>
+<li> Use <code>stopifnot()</code> say if your function requires a data.table as an input. </li>
+</ul>
+<br>
+<br>
+<p>
+Alastair Clarke
+<br>
+27th April, 2019
+</p>
+			</article>
+		</section>
+
+		<footer id="banner">
+			<p style="background-color:white"> Copyright &copy 2018, 2019 Alastair Clarke </p>
+		</footer>
+	</body>
+
+</html>
