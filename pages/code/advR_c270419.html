@@ -70,9 +70,26 @@
 <li> Combining a function with the <code>lapply()</code> functional.
 <li> Closures make and return functions. 
 </ul>
-<h4> Anonymous </h4>
+<h4> Anonymous Functions and Closures </h4>
 <ul>
 <li> Functions without a name. Useful with <code>integrate()</code> or <code>lapply()</code>.
+<li> Mutable states e.g. variables holding different values at different levels or states, such as the iteration counter.
+<li> Functionals are useful when you have several functions that are variations on a theme e.g. AEP or OEP, Ground-up or Gross.
+<li> Pythagorean means: Arithmetic, Geometric and Harmonic
+<code>
+pymean <- function(kind){
+  if (kind=="a"){
+    function(x) sum(x)/length(x)
+  } else if (kind=="g") {
+    function(x) (prod(x))^(1/length(x))
+  } else if (kind=="h") {
+    function(x) length(x)/sum(1/x)
+  }
+}
+$ pymean("h")(c(1,4,4))
+$ 2
+</code>
+</li>
 </ul>
 <br>
 <br>
