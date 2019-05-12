@@ -19,6 +19,7 @@
 				<li> <a href="../../pages/about.html"> About </a>
 				<li> <a href="../../pages/blog.html"> Blog </a>
 				<li> <a href="../../pages/code.html"><b> Code </b></a>
+				<li> <a href="../../pages/articles.html"> Articles </a>
 				<li> <a href="../../pages/reviews.html"> Reviews </a>
 			</ul>
 		</nav>
@@ -31,6 +32,7 @@
 <i> Notes from <a href="http://adv-r.had.co.nz"> Advanced R </a> by Hadley Wickham </i>
 <br>
 <br>
+
 <a href="http://adv-r.had.co.nz/Data-structures.html"><h3> Data Structures </h3></a>
 <hr>
 <h4> Vectors </h4>
@@ -111,6 +113,7 @@ df <- data.frame(x=1:3, y=c("a", "b", "c"), stringsAsFactors=FALSE)
 </ul>
 <br>
 <br>
+
 <a href="http://adv-r.had.co.nz/Subsetting.html"> <h3>Subsetting</h3></a>
 <hr>
 <h4> Data types </h4>
@@ -158,8 +161,186 @@ mtcars$var
 mtcar[[vars]]
 ## [1] 6 6 4 ...
 </code>
+<li> Preserve the data frame with empty subset
+<code>
+faithful[] <- lapply(faithful, as.integer)	# still a df
+faithful <- lapply(faithful, as.integer)	# now a list of 2
+</code>
+</ul>
+<h4> Applications </h4>
+<ul>
+<li> Lookup tables
+<li> Matching and merging
+<li> Bootstrapping
+<code>
+df <- data.frame(x=rep(1:3, each=2), y=6:1, z=letters[1:6])
+set.seed(10)
+df[sample(nrow(df)),]	# random reordering
+# Select 6 bootstrap replicants
+df[sample(nrow(df), 6, rep=T),]
+</code>
+<li> Use the vector boolean operators <code>&</code> and <code>|</code> for subsetting.
+<li> <code>&&</code> and <code>||</code> are scalar operators and useful for if statements.
 </ul>
 </p>
+<br>
+<br>
+
+<a href="http://adv-r.had.co.nz/Vocabulary.html"> <h3>Vocabulary</h3></a>
+<hr>
+<h4> Basics</h4>
+<code>
+match
+assign
+get
+all.equal
+complete.cases
+cummax, cummin
+rle
+missing
+on.exit
+invisible
+setdiff
+setequal
+which
+sweep
+data.matrix
+rep_len
+seq_len, seq_along
+split
+expand.grid
+next, break
+switch
+sapply, vapply
+apply
+tapply
+replicate
+</code>
+<h4> Common Data Structure Vocab</h4>
+<ul>
+<li> See stringr
+</ul>
+<h4> Working with R </h4>
+<code>
+ls, exists
+library, require	# What's the difference?
+demo
+example
+# Debugging
+traceback
+browser
+recover
+options(error = )
+stop, warning, message
+tryCatch, try
+</code>
+<h4> I/O </h4>
+<ul>
+<li> Useful for package and function writing
+</ul>
+<br>
+<br>
+
+<a href="http://adv-r.had.co.nz/Style.html"> <h3> Style </h3> </a>
+<hr>
+<h4> Tips </h4>
+<ul>
+<li> File names should be meaningful and end in <code>.R</code>. Prefix with number if need to be run in sequence.
+<li> Variables and functions - lowercase, <code>_</code> between words, nouns for variables and verbs for functions.
+<li> Spaces around operators.
+<li> Indent with two spaces, not with tabs. Except for function definitions.
+<li> Use <code><-</code> and not <code>=</code>, for assignment.
+<li> Comments should explain the why, not the what.
+</ul>
+<br>
+<br>
+
+<a href="http://adv-r.had.co.nz/Functions.html"> <h3>Functions</h3></a>
+<hr>
+<h4> Components</h4>
+<ul>
+<li> Three components: body, formals and environment e.g. <code>body(f)</code>
+<li> Except primitive functions e.g. <code>sum</code> written in C
+<li> A function to determine whether an object is a function.
+<code>
+is.fn <- function(x){
+  if (class(x)=="function"){
+    y <- "yes"
+    } else {
+    y <- "no"
+  }
+  return(y)
+}
+
+is.fn(is.fn)
+## "yes"
+</code>
+</ul>
+<li> Name masking - names of objects belong to their environment
+<li> Functions vs Variables
+<li> Fresh start - <code>exists()</code> function
+<li> Dynamic lookup
+	<ul>
+	<li> <code>codetools::findGlobals()</code> - gives a function's external dependencies
+	<li> You must always rely on functions defined in base R or other R packages.
+	<li> Note you could turn <code>(</code> into a function!
+	</ul>
+</ul>
+
+<h4> Every Operation is a Function Call </h4>
+<ul>
+<li> "Everything that exists is an object; everything that happens is a function call." John Chambers (Creator of the S programming language)
+<li> Equivalent operations (note backticks, not apostrophes)
+<code>
+x + y
+`+` (x, y)
+</code>
+<li> <code>sapply()</code> - powerful function accepts "+" and `x`
+</ul>
+
+<h4> Function Arguments </h4>
+<ul>
+<li> Call a function - specify arguments by complete or partial names
+<code> 
+f <- function(catalog, peril, region){
+list(c = catalog, p = peril, r=region)
+}
+</code>
+<li> To publish code on CRAN you must use complete names. 
+<li> Send a list to a function using <code>do.call()</code>
+<code> 
+do.call(mean, args)
+</code>
+<li> Setting default values
+</ul>
+
+<h4> Special Calls </h4>
+<ul>
+<li> Prefix arguments: names of functions come before e.g. mean() 
+<li> Infix arguments: names in-between e.g. +, -, >
+<li> Replacement functions
+</ul>
+
+<h4> Return Values </h4>
+<ul>
+<li> Suggests reserving explicit <code>return(y)</code> for early returns.
+<li> See also <code>invisible()</code> values.
+<li> The function <code>on.exit()</code> restores any changes to global state by impure functions.
+<li> Hadley's example:
+<code>
+in_dir <- function(dir, code) {
+  old <- setwd(dir)
+  on.exit(setwd(old))
+
+  force(code)
+}
+getwd()
+</code>
+</ul>
+<br>
+<br>
+
+<a href="http://adv-r.had.co.nz/OO-essentials.html"> <h3> OO Field Guide </h3> </a>
 <br>
 <br>
 <p>

@@ -1,0 +1,112 @@
+
+<!DOCTYPE HTML>
+<html lang="en-GB">
+	<head>
+		<title> alastairclarke.org | Blog </title>
+		<meta charset="UTF-8">
+		<link rel=StyleSheet type="text/css" href="../../css/style.css">
+	</head>
+
+	<body>
+		<header id="banner">
+			<h1> Alastair Clarke's Personal Website </h1>
+		</header>
+		
+		<section id="sidebar">
+		<nav Class="navigation">
+			<ul>
+				<li> <a href="../../index.html"> Home </a>
+				<li> <a href="../../pages/about.html"> About </a>
+				<li> <a href="../../pages/blog.html"> Blog </a>
+				<li> <a href="../../pages/code.html"><b> Code </b></a>
+				<li> <a href="../../pages/articles.html"> Articles </a>
+				<li> <a href="../../pages/reviews.html"> Reviews </a>
+			</ul>
+		</nav>
+		</section>
+		
+		<section id="wrapper">
+			<article>
+				<p>	
+				<h2> Linux Part 1: Functions </h2>
+<h3> tar </h3>
+The <code>tar</code> function allows you to zip and unzip (extract) files. Zipped files take up less storage and are easier to transport.
+<br>
+<code> 
+$ man tar
+tar [-]xvzf [pathname ...]
+tar -cf archive.tar foo bar
+tar -tvf archive.tar
+tar -xf archive.tar
+</code>
+Suffixes after .tar: .gz, .bz, .bz2, .xz, .Z, .zip, .7z, .rar. <br> 
+What is the difference between tar.gz, tar.xz, bz? <br>
+Seems that there is no difference between the name 'foo.tar' and 'foo.tar.gz'. However the .gz suffix lets the other know that the files were compressed using gzip. <br>
+Does it matter? Do I have to know how the files were compressed in order to extract them? You can gzip a folder using <code> tar czvf archive.tar foo*.jpg </code> and unzip using <code> tar xvf archive.tar </code>.
+<br>
+<br>
+<h3> ln </h3>
+Allows you to make softlinks to files such as binaries. For example, to run the program foo, I have to cd to where foo is and then run ./start-foo. Instead I could create a softlink to start-foo in my /usr/local/bin/ folder. But I want to go further, start-foo is too long a name. I just want to call it foo, so that all I have to do is type: foo, anywhere and anytime and the program runs. I could change the name of the binary. <br>
+A basic softlink to start-foo.
+<code>
+sudo ln -s ~/.../start-foo /usr/local/bin/start-foo
+</code> 
+<br>
+<br>
+<h3> file </h3>
+You can use <code>file</code> to learn more about a particular file. 
+<br>
+<br>
+<h3> man </h3>
+The manual's section on <code>man</code> provides a description of the <b>synopsis</b>. <b>Bold text</b> should be typed, <u>italic text</u> should be replaced with an argument, any or all arguments within [] are optional. They are called options.
+<code>
+<b>man -k</b> <u>printf</u> # Searches for keyword printf
+<br>
+<br>
+<ul>
+<li> To view contents of file: cat, more (use spacebar to scroll)
+<li> Count words, lines in a file: wc
+<li> Output to new file ">", append ">>"
+<li> Pipe output into second command using "|"
+<li> whereis bash
+<li> whoami (hopefully not root)
+<li> To find where the program runs from: <code>which -a ls </code>
+<li> More information: man hier, info info, man proc
+<li> Check spelling: grep occasion /usr/share/dict/words 
+</ul>
+The commands <code> man </code> and <code>info</code> should be your first port of call when you get stuck. Experienced users read the documentation every day: beginners should read it all the time.
+				<h2> Linux Part 2: bash </h2>
+<h3> Getting started </h3> 
+"The shell is an advanced way of communicating with the system." <a href="http://www.tldp.org/LDP/intro-linux/html/sect_03_02.html"> Intro to Linux </a> <br>
+<b> bash </b> stands for Bourne Again SHell. It is the standard GNU shell.
+<ol>
+<li> Create a ".sh" file - shell script.
+<li> First line: <code>#!/bin/bash</code>
+<li> Run script <code>./myscript.sh</code>. If permission denied: <code> chmod +x myscript.sh</code>.
+</ol>
+Note that "." means the current directory cf. ".." the parent directory. <br>
+To only grant the user the permission to execute a file: <code>chmod u+x myscript.sh</code>. <br>
+The <code>test</code> function should be very useful. Allows you to test whether file1 is newer or older than file2, whether file1 and file2 exist. 
+<br>
+<br>
+The code <code>echo $PATH</code> displays the content ($) of the variable PATH.
+<h3> What was that command I used? </h3>
+If you need to recall a command you used, the following is useful. For example, I use openconnect occasionally so I forget the order of the command. Also play with <b>Ctrl+R</b>.<br>
+<code>
+$ grep -a open .bash_history
+</code>
+
+<br>
+Alastair Clarke
+<br>
+11th December, 2018
+</p>
+			</article>
+		</section>
+
+		<footer id="banner">
+			<p style="background-color:white"> Copyright &copy 2018 Alastair Clarke </p>
+		</footer>
+	</body>
+
+</html>
