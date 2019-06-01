@@ -6,6 +6,11 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
 		<link rel=StyleSheet type="text/css" href="../../css/style.css">
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+		  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript" async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML'></script>
 	</head>
 
 	<body>
@@ -29,16 +34,40 @@
 		<section id="wrapper">
 			<article>
 <h2> Displaying Equations on the Web </h2>
+<h4> <i> R Markdown </i> </h4>
+<p>
+Websites are for two kinds of reader: the reader of the content and the reader of the source-code (html, css, javascript). As a recent convert to Rstudio, I used R Markdown to create a beautifully formatted webpage about <a href="slts.html">Data-driven Methods for Formulating Differential Equations</a>. While this is a blessing for the content reader, the html source-code contains several javascripts which are difficult to read (arguably obfuscated). This is a curse for the source-code reader who wants to understand how the webpage was created. In R Markdown's defence, most of these javascripts come under <i>free</i> licences such as the MIT licence, so the source-code reader can freely access, modify and redistribute code (provided they have the patience). 
+</p>
 <h4> <i> MathJax </i> </h4>
 <p>
-Websites are for two kinds of reader: the reader interested in the content and the reader interested in the source-code (html, css, javascript). As a recent convert to Rstudio, I used R Markdown to create a beautifully formatted webpage about <a href="slts.html">Data-driven Methods for Formulating Differential Equations</a>. However the html source-code contains a lot of
-R Markdown is an easy way to generate beautiful documents whether it be in pdf or html format. When you view the html code it contains a lot of obfuscated JavaScript language which is a    
-MathJax is an open-source JavaScript library used by arXiv, MathOverflow, Wikipedia and Coursera to display mathematics.
+MathJax is an open-source JavaScript library used by arXiv, MathOverflow, Wikipedia and Coursera to display mathematics. To use it I inserted the following line of code into the header of this webpage's html file.
+</p>
+<p>
+<pre><code>&lt;script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async&gt;&lt;/script&gt;</code></pre>
+</p>
+<p>
+Using MathJax I can reproduce the first sentence of Data-driven Methods:
+<br><br>
+The following Ordinary Differential Equation (ODE) can describe the deterministic and stochastic processes of a non-linear, complex system:
+$$
+\frac{d}{dt}\mathbf{X}(t) = \mathbf{g}(\mathbf{X}(t), t) + \mathbf{h}(\mathbf{X}(t), t)\eta(t) 
+$$
+where \(\mathbf{g}\) represent the deterministic part and \(\eta\) the stochastic part. \(\mathbf{X}(t)\) is a time-dependent \(d\)-dimensional, stochastic vector and \(\eta\) is Gaussian, white noise, satisfying:
+$$
+\langle \eta(t) \rangle = 0
+$$
+and:
+$$
+\langle \eta(t)\eta(t') \rangle = \delta(t-t').
+$$
+To write in-line maths, the symbols should be encased in backslash open brackets and backslash closed brackets as default. I prefer to user dollar signs instead, so I add in a second line of script to do this (please see the source-code to view the script). This makes it a little easier to write $\eta$.
+<br><br>
+Here's a great <a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">reference guide for MathJax</a>.
 <br>
 <br>
 Alastair Clarke
 <br>
-23 September 2018
+1 June 2019
 </p>
 
 			</article>
