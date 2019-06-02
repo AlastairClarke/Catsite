@@ -160,6 +160,9 @@ section#wrapper {
 	height: auto;
 	margin: 3%;
  }
+.textLeft {
+	float: left;
+}
 }
 
 
