@@ -134,10 +134,32 @@ nav li a:hover {
 }
 
 /*---- Mobile Phone -----*/
-/*
-@media only screen and (max-width: 600px) {
- body {
-  width: 100%
+@media screen and (max-width: 600px) {
+body {
+	width: 100%;
+}
+header#banner {
+	width: 94%;
+	margin: 3%;
+	height: auto;
+ }
+footer#banner {
+	width: 94%;
+	height: 40px;
+	margin: 3%;
+ }
+section#sidebar {
+	float: left;
+	width: 94%;
+	height: auto;
+	margin: 3%;
+ }
+section#wrapper {
+	float: left;
+	width: 94%;
+	height: auto;
+	margin: 3%;
  }
 }
-*/
+
+
