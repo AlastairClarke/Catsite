@@ -163,6 +163,10 @@ section#wrapper {
 .textLeft {
 	float: left;
 }
+figure {
+ 	margin-left: 0;
+	margin-right: 0;
+}
 }
 
 
