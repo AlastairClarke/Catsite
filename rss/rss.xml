@@ -1,0 +1,19 @@
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+  <title>Alastair Clarke's Blog</title>
+  <link>https://alastairclarke.org</link>
+  <description>Catastrophic blogs</description>
+  <item>
+    <title>Displaying Equations on the Web</title>
+    <link>https://alastairclarke.org/pages/blog/eqn_b010619.html</link>
+    <description>How to display equations beautifully on your website</description>
+  </item>
+</channel>
+
+
+<category>Catastrophe risk</category>
+<copyright>2019 Alastair Clarke </copyright> 
+</rss> 
