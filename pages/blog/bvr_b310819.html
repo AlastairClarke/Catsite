@@ -1,0 +1,93 @@
+
+<!DOCTYPE HTML>
+<html lang="en-GB">
+	<head>
+		<title> alastairclarke.org | Blog </title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
+		<link rel=StyleSheet type="text/css" href="../../css/style.css">
+	</head>
+
+	<body>
+		<header id="banner">
+			<h1> Alastair Clarke's Personal Website </h1>
+		</header>
+		
+		<section id="sidebar">
+		<nav Class="navigation">
+			<ul>
+				<li> <a href="../../index.html"> Home </a>
+				<li> <a href="../../pages/about.html"> About </a>
+				<li> <a href="../../pages/blog.html"><b> Blog </b></a>
+				<li> <a href="../../pages/code.html"> Code </a>
+				<li> <a href="../../pages/articles.html"> Articles </a>
+				<li> <a href="../../pages/reviews.html"> Reviews </a>
+			</ul>
+		</nav>
+		</section>
+		
+		<section id="wrapper">
+			<article>
+<h2>Updating from Ubuntu 16 to 18</h2>
+<p>
+I had some problems when updating from U16 to U18 (Bionic Beaver). Here I share those problems and the solutions. In tty1
+terminal I called the following commands: <br>
+<code>
+$ sudo apt-get update <br>
+$ sudo apt-get upgrade <br>
+$ sudo apt-get dist-upgrade <br>
+$ sudo do-release-upgrade <br>
+</code>
+Initially the update failed because my computer could not locate a release file for one of the repositories. This was 
+the repository I added manually to the <code>/etc/apt/sources.list</code> file many months ago when I installed R. To
+solve that problem I commented out that repository in the sources.list file. I was then able to proceed, updating and 
+upgrading, downloading the U18 files and installing them. 
+</p><br><br><p>  
+I have a dual boot Linux and Windows setup and have edited the file <code>/etc/default/grub</code> by commenting out 
+<code>GRUB_HIDDEN_TIMEOUT=0</code>. This meant that during the U18 installation I was asked whether I wanted to merge 
+these edits with the new grub file. I chose "no" and accepted the new grub file. 
+</p><br><br><p>  
+I then removed packages and was asked to restart the computer. This is when the problems started. On reboot, I went 
+into Ubuntu (rather than Windows) but it did not go to the normal Ubuntu log-in screen. Instead the computer looped 
+through three or four different screens, two black screens, and one which had a list of text with "[OK]" written in the 
+far left column. The first time it did this I thought there was an error so I switched off the computer and turned 
+it on again. The same looping occurred on reboot and the last line of text on one of the screens read: <br>
+<code>Started GNOME display manager... p link was shut down....</code><br>
+I partially resolved this by following the steps in this
+<a href="https://askubuntu.com/questions/641642/gui-does-not-start">link</a>. It was tricky to follow the steps. I could
+move to a tty terminal using Ctrl+Alt+F7 and Alt+F2 but the screen-switching continued. I had to be very quick at
+logging in and running the commands while the screen was on the terminal. Ultimately I switched my display manager 
+from gdm3 to lightdm and restarted. This was met with some success. On restarting, the screens no longer switched and 
+looped. I could now see the U18 log-in screen. 
+</p><br><br><p>  
+I attempted to log-in, the screen went black and the log-in screen reappeared. I could not advance into the GUI.
+I could use the ttys but not the GUI. The problem was that the nvidia driver on my computer was not compatible with
+my graphics card. This solution is described in this 
+<a href="https://askubuntu.com/questions/223501/ubuntu-gets-stuck-in-a-login-loop">link</a>. The code <code>nvidia-current</code>
+showed that my current nvidia driver was version 340. Compatible drivers <code>$ sudo apt-cache search nvidia-[0-9]+$</code> 
+did not include 340. However 367 was included so I ran: <br>
+<code>
+$ sudo add-apt-repository ppa:graphics-drivers/ppa <br>
+$ sudo apt update <br>
+$ sudo apt install nvidia-367 <br>
+$ sudo reboot <br>
+</code>
+</p><br><br><p>  
+True success! I was then able to log-in to the GUI as before and access Ubuntu 18.04.
+</p><br><br><p>  
+</p>
+<br><br>
+<p>
+Alastair Clarke
+<br>
+31 August, 2019
+</p>
+			</article>
+		</section>
+
+		<footer id="banner">
+			<p style="background-color:white"> Copyright &copy 2018, 2019 Alastair Clarke </p>
+		</footer>
+	</body>
+
+</html>
