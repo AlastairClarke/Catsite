@@ -17,6 +17,10 @@ code { white-space:pre;
 	font-size:large;
 }
 
+pre { white-space:pre; 
+	font-size:large;
+}
+
 p, ul, li {
 	margin:0px;
 	padding:0;
