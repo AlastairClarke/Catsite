@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html lang="en-GB">
+ <head>
+  <title> alastairclarke.org | Blog </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">		
+  <link rel=StyleSheet type="text/css" href="../../css/style.css">
+ </head>
+
+<body>
+ <header id="banner">
+  <h1> Alastair Clarke's Personal Website </h1>
+ </header>
+
+ <section id="sidebar">
+  <nav Class="navigation">
+   <ul>
+    <li> <a href="../index.html"> Home </a>
+    <li> <a href="../pages/about.html"> About </a>
+    <li> <a href="../pages/blog.html"><b> Blog </b></a>
+    <li> <a href="../pages/code.html"> Code </a>
+    <li> <a href="../pages/reviews.html"> Reviews </a>
+   </ul>
+  </nav>
+ </section>
+	
+ <section id="wrapper">
+ <article id="2020">
+<h3>2020 Blog</h3>
+<h4>Date</h4>
+<p>
+<a href="#20200811-post">11th August</a>
+</p>
+</article>
+<hr>
+<article id="20200811-post">
+<h1 id="hello">First Post of 2020</h1>
+<p>I am changing the format of my blog posts. Previous posts have a separate page but now all the posts for the year will be on one page, with each post having its own segment. This style is more like a journal. </p><br>
+<p>I have also changed how I write and process a post. I was previously writing all the html code but now I will write the post in markdown and use pandoc to convert that to html. This html is then <i>injected</i> into the published html file which contains all the posts for the year. I have written a bash script to automate the process and shared it below. To display the bash code in the browser I have wrapped it in the pre tag and changed &lt to &amplt and &gt to &ampgt.
+</p>
+<pre>
+#!/bin/bash
+# update.sh
+# PURPOSE: File takes two inputs: name of *.html file being updated and 
+# the *.md file being added. The md content becomes a new section with a 
+# href added to the top.
+
+FILE=$1 # file.html
+ADD=$2 # newcontent.md
+
+# First bit
+awk '/DOCTYPE/{a=1};a;/&lthr&gt/{exit}' $FILE &gt top.html # look for first hr
+awk '/&lthr&gt/,/&lt\/html&gt/' $FILE &gt bottom.html # look for most recent post
+DATE=`date +"%Y%m%d"`
+ID="id"$DATE"-post"
+LINE1="&ltarticle id="\"$ID\""&gt"
+LINE2="&lt/article&gt"
+echo $LINE1 &gt&gt top.html
+
+# MD bit
+pandoc $ADD -o middle.html
+cat middle.html &gt&gt top.html
+echo $LINE2 &gt&gt top.html
+
+# Last bit
+cat bottom.html &gt&gt top.html
+cat top.html &gt $FILE
+rm top.html bottom.html middle.html
+
+# Add href date of post
+HREF=`awk '/#id2020/' $FILE`
+NICEDATE=`date +"%dth %B"`
+NEW=$HREF" | &lta href="\""#"$ID\""&gt"$NICEDATE"&lt/a&gt"
+sed -i "s:$HREF:$NEW:g" $FILE
+</pre>
+<p>
+Before running this script remember to make it executable using:
+<br>
+<code>
+$ chmod +x update.sh
+</code><br>
+The script require two inputs: (1) file.html being updated, and; (2) new.md being added. It should run with the following. I hope this will make it easier and quicker to write and publish posts.<br>
+<code>
+$ ./update.sh "file.html" "new.md"
+</code>
+</p>
+</article>
+<hr>
+
+ </section>
+
+ <footer id="banner">
+  <p style="background-color:white"> Copyright &copy 2020 Alastair Clarke </p>
+ </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
