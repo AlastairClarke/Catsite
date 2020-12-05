@@ -27,12 +27,14 @@ p, ul, li {
 	color: Black;
 	font-size: 1em;
 	font-family: Georgia, Times New Roman, Times, Serif;
+	line-height: 1.6;
 	/*font-weight: 100;*/
 }
 
 blockquote {
 	font-size: 0.95em;
 	font-family: Georgia, Times New Roman, Times, Serif;
+	line-height: 1.6;
 }
 
 figure, figcaption {
